@@ -1,7 +1,7 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
-
+// const favicon = require("serve-favicon");
 var db = require("./models");
 
 var app = express();
@@ -44,6 +44,9 @@ if (process.env.NODE_ENV === "test") {
 //   });
 // });
 
+// var path = require("path");
+
+// app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 module.exports = app;
 app.listen(PORT, function() {
   console.log(
