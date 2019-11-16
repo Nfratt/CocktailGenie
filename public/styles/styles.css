@@ -12,11 +12,10 @@
   margin: 20px;
   height: 250px;
 }
-#supercontainer{
-  /* background:purple; */
-}
+
 
 body{
-  /* background:blueviolet */
+  background: url("../images/backdrop.jpg");
+  color: white;
 }
 
