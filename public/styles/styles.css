@@ -1,3 +1,22 @@
 .list-group-item {
   line-height: 2.5;
 }
+.work {
+  position: relative;
+  float: left;
+  width: 200px;
+
+  margin: 20px 0 25px;
+  overflow: auto;
+
+  margin: 20px;
+  height: 250px;
+}
+#supercontainer{
+  /* background:purple; */
+}
+
+body{
+  /* background:blueviolet */
+}
+
