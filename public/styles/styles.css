@@ -1,3 +1,25 @@
 .list-group-item {
   line-height: 2.5;
 }
+.work {
+  position: relative;
+  float: left;
+  width: 200px;
+
+  margin: 20px 0 25px;
+  overflow: auto;
+
+  margin: 20px;
+  height: 250px;
+}
+
+
+body{
+  background: url("../images/backdrop.jpg");
+  color: white;
+}
+#alc{
+  width: 200px;
+  height: 200px;
+}
+
