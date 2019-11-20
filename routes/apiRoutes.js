@@ -1,35 +1,30 @@
-var db = require("../models");
+const db = require("../models");
+const axios = require("axios");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", async (req, res) => {
-    try {
-      const data = await db.Example.findAll({});
-      res.json(data);
-    } catch (error) {
-      res.status(400).json({ error: { name: error.name, msg: error.message } });
-    }
+  // Search by ingredient for one randomly chosen drink
+  app.get("/api/drinks", async (req, res) => {
+    axios
+      .get("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + "Gin")
+      .then(response => {
+        const searchData = response.data;
+        res.json(searchData);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   });
 
-  // Create a new example
-  app.post("/api/examples", async (req, res) => {
-    try {
-      const result = await db.Example.create(req.body);
-      res.json(result);
-    } catch (error) {
-      res.status(400).json({ error: { name: error.name, msg: error.message } });
-    }
-  });
-
-  // Delete an example by id
-  app.delete("/api/examples/:id", async (req, res) => {
-    try {
-      const result = await db.Example.destroy({ where: { id: req.params.id } });
-      const deletedRowCount = result;
-      const status = deletedRowCount > 0 ? 200 : 404;
-      res.status(status).json({ deletedRowCount });
-    } catch (error) {
-      res.status(400).json({ error: { name: error.name, msg: error.message } });
-    }
+  // Lookup a completely random drink
+  app.get("/api/drinks/random", async (req, res) => {
+    axios
+      .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+      .then(response => {
+        const searchData = response.data;
+        res.json(searchData);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   });
 };
