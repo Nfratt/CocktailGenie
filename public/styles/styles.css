@@ -16,10 +16,11 @@
 
 body{
   background: url("../images/backdrop.jpg");
-  color: white;
+  background-color:black;
+  background-repeat: no-repeat;
 }
+
 #alc{
   width: 200px;
   height: 200px;
 }
-
