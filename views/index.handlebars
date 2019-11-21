@@ -1,3 +1,18 @@
+<div id="toggle-button" class="container">
+
+  <nav id="menu">
+    <header>
+      <h2>Menu</h2>
+    </header>
+  </nav>
+
+  <main id="panel">
+    <header>
+      <h2>Panel</h2>
+    </header>
+  </main>
+</div>
+
 <div id="home">
   <div class="container" id="supercontainer">
     <div class="row">
@@ -15,8 +30,10 @@
             <textarea class="form-control" id="example-description" aria-describedby="example-description"
               placeholder="Enter Example Description"></textarea>
           </div>
-          <button id="submit" class="btn btn-primary float-right">Search</button>
-          <button id="randomize" class="btn btn-warning float-right">give me a random drink</button>
+
+          <button id="submit" class="btn btn-primary float-right">Give me a suggestion </button>
+          <a href="/example" class="btn btn-warning float-right">give me a random drink</a>
+
         </form>
         <h3>Recent searches</h3>
         <ul id="example-list" class="list-group">
@@ -52,4 +69,19 @@
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<script src="/public/js/index.js"></script>
+<script src="/public/js/slideout.js"></script>
+<script src="dist/slideout.min.js"></script>
+<script>
+  var slideout = new Slideout({
+    'panel': document.getElementById('panel'),
+    'menu': document.getElementById('menu'),
+    'padding': 256,
+    'tolerance': 70
+  });
+
+  // Toggle button
+  document.querySelector('.toggle-button').addEventListener('click', function() {
+    slideout.toggle();
+  });
+</script>
