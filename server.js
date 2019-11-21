@@ -1,8 +1,8 @@
 require("dotenv").config();
-const express = require("express");
-const exphbs = require("express-handlebars");
-
-const db = require("./models");
+var express = require("express");
+var exphbs = require("express-handlebars");
+// const favicon = require("serve-favicon");
+var db = require("./models");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -33,7 +33,6 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-// Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
     console.log(`  Listening on ${PORT} in your browser.`);
@@ -41,3 +40,4 @@ db.sequelize.sync(syncOptions).then(function() {
 });
 
 module.exports = app;
+

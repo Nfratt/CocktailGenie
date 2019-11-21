@@ -1,3 +1,33 @@
 .list-group-item {
   line-height: 2.5;
 }
+.work {
+  position: relative;
+  float: left;
+  width: 200px;
+
+  margin: 20px 0 25px;
+  overflow: auto;
+
+  margin: 20px;
+  height: 250px;
+}
+
+
+body{
+  background: url("../images/backdrop.jpg"); 
+   color: white; 
+   background-size: cover;
+  background-repeat: no-repeat; 
+
+}
+#alc{
+  width: 200px;
+  height: 200px;
+}
+
+
+/* #supercontainer{
+  background: url("../images/backdrop.jpg");
+  background-size:cover ;
+} */
