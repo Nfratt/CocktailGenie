@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const recipe = sequelize.define("recipe", {
+  const Recipe = sequelize.define("Recipe", {
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -14,5 +14,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT
     }
   });
-  return recipe;
+  // Recipe.associate = function(models) {
+  //   Recipe.belongsTo(models.users, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  //   Recipe.hasMany(models.ingredients, {
+  //     as: "test_id",
+  //     onDelete: "cascade"
+  //   });
+  // };
+  return Recipe;
 };

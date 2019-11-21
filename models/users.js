@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  const users = sequelize.define("Users", {
+  const users = sequelize.define("users", {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -8,5 +8,15 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+  // users.associate = function(models) {
+  //   users.hasMany(models.Recipe, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  //   users.hasMany(models.ingredients, {
+  //     foreignKey: "ownerId"
+  //   });
+  // };
   return users;
 };

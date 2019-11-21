@@ -25,7 +25,7 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-const syncOptions = { force: false };
+const syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -33,25 +33,11 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-// Starting the server, syncing our models ------------------------------------/
-// db.sequelize.sync(syncOptions).then(function() {
-//   app.listen(PORT, function() {
-//     console.log(
-//       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-//       PORT,
-//       PORT
-//     );
-//   });
-// });
-
-// var path = require("path");
-
-// app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
-module.exports = app;
-app.listen(PORT, function() {
-  console.log(
-    "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-    PORT,
-    PORT
-  );
+db.sequelize.sync(syncOptions).then(function() {
+  app.listen(PORT, function() {
+    console.log(`  Listening on ${PORT} in your browser.`);
+  });
 });
+
+module.exports = app;
+
