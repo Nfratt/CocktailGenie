@@ -12,9 +12,11 @@
 
 
 
+
 body{
   background: black; 
   color: white;
+  font-family: 'DM Serif Display', serif;
 }
 
 #alc{
