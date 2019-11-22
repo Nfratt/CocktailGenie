@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const ingredients = sequelize.define("ingredients", {
-    name: {
+    ingredientsName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -8,5 +8,13 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
+  // ingredients.associate = function(models) {
+  //   ingredients.belongsTo(models.Recipe, {
+  //     onDelete: "cascade"
+  //   });
+  //   ingredients.belongsTo(models.users, {
+  //     onDelete: "cascade"
+  //   });
+  // };
   return ingredients;
 };

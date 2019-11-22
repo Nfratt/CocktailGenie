@@ -16,14 +16,14 @@
 
 body{
   background: black; 
-   color: white; 
-   background-size: cover;
-  background-repeat: no-repeat; 
+
 
 }
+
 #alc{
   width: 200px;
   height: 200px;
+
 }
 #maincontainer{
   background-image:linear-gradient(to top , #A2560B,#F3610C,#F3AE0C,#ffffff) ;

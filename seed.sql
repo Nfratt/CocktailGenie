@@ -1,0 +1,2 @@
+###SCHEMA
+SELECT * FROM `Recipes`; 
