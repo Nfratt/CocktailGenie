@@ -14,58 +14,72 @@
 </div>
 
 <div id="home">
-  <div class="container" id="supercontainer">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is CocktailGenie</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Ingrediant</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
-              placeholder="enter the name of an ingrediant ">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description"
-              placeholder="Enter Example Description"></textarea>
-          </div>
 
-          <button id="submit" class="btn btn-primary float-right">Give me a suggestion </button>
-          <a href="/example" class="btn btn-warning float-right">give me a random drink</a>
+  <div id="maincontainer" class="conatiner-fluid">
+    <div class="container" id="supercontainer">
+      <div class="row">
+        <div class="col-8 offset-2">
+          <br>
 
-        </form>
-        <h3>Recent searches</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+          <h1>{{msg}}</h1>
+          <h2>This is CocktailGenie</h2>
+          <form class="clearfix mb-4" action="POST">
+            <div class="form-group">
+              <label for="example-text">Ingrediant</label>
+              <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+                placeholder="enter the name of an ingrediant ">
+              <button id="submit" class="btn btn-primary float-right">Search Ingrediant</button>
+            </div>
+            <h1>or</h1>
+            <div class="form-group">
+              <label for="example-text">specific cocktail</label>
+              <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+                placeholder="enter the name of a cocktail ">
+              <button id="submit" class="btn btn-primary float-right">Search cocktail</button>
+            </div>
+          </form>
+        </div>
+        <button id="randomize" class="btn btn-warning float-right">give me a random drink</button>
+
       </div>
-      <br>
-      <div class="col-8 offset-2">
-        <h3></h3>
-        <div class="work">
-        <a  href="">
-          <img src= "/images/rum.png" id="alc" alt="rum"></img>
+      <h3>Popular searches</h3>
+      <ul id="example-list" class="list-group">
+        {{#each examples}}
+        <li data-id="{{this.id}}" class="list-group-item">
+          <a href="example/{{this.id}}">{{this.text}}</a>
+          <button class="btn btn-danger float-right delete">ｘ</button>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    <br>
+    <div class="col-8 offset-2">
+      <h3></h3>
+      <div class="work">
+        <a href="">
+          <img src="/images/rum.png" id="alc" alt="rum"></img>
           <h3>Rum</h3>
         </a>
-        </div>
-        <a class="work" href="">
-          <img src="/images/vodka.png"id="alc" alt="vodka">
-          <h3>vodka</h3>
-        </a>
-        <a class="work" href="">
-          <img src="/images/whisky.png" id="alc" alt="whisky">
-          <h3>whisky</h3>
-
-        </a>
       </div>
+      <a class="work" href="">
+        <img src="/images/vodka.png" id="alc" alt="vodka">
+        <h3>Vodka</h3>
+      </a>
+      <a class="work" href="">
+        <img src="/images/whisky.png" id="alc" alt="whisky">
+        <h3>Whisky</h3>
+      </a>
+      <a class="work" href="">
+        <img src="/images/gin.png" id="alc" alt="gin">
+        <h3>Gin</h3>
+      </a>
+      <a class="work" href="">
+        <img src="/images/" id="alc" alt="taquila">
+        <h3>Taquila</h3>
+      </a>
     </div>
   </div>
+</div>
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
