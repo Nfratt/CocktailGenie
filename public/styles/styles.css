@@ -5,13 +5,11 @@
   position: relative;
   float: left;
   width: 200px;
-
   margin: 20px 0 25px;
-  overflow: auto;
-
   margin: 20px;
   height: 250px;
 }
+
 
 
 body{
