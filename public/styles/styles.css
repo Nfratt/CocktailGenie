@@ -15,7 +15,7 @@
 
 
 body{
-  background: url("../images/backdrop.jpg"); 
+  background: black; 
    color: white; 
    background-size: cover;
   background-repeat: no-repeat; 
@@ -25,9 +25,9 @@ body{
   width: 200px;
   height: 200px;
 }
+#maincontainer{
+  background-image:linear-gradient(to top left, #ffffff,#999999) ;
+  text-align: center;
+}
 
 
-/* #supercontainer{
-  background: url("../images/backdrop.jpg");
-  background-size:cover ;
-} */
