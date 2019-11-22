@@ -1,5 +1,6 @@
 var db = require("../models");
 const axios = require("axios");
+console.log(db);
 
 module.exports = function(app) {
   // Load index page
@@ -39,13 +40,43 @@ module.exports = function(app) {
   });
 
   // Load search page and pass in a cocktail ingredient
-  app.post("/search/:id", async (req, res) => {
+  app.get("/search", async (req, res) => {
     try {
-      const dbExample = await db.Example.findOne({
-        where: { id: req.params.id }
-      });
+      const { data } = await axios.get(
+        "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" +
+          req.query.ingredient //of search bar
+      );
+      //prints random cocktail JSON data to the console
+      console.log(data);
+      // const dbExample = await db.Example.findOne({
+      //   where: { id: req.params.id }
+      // });
       res.render("random", {
-        example: dbExample
+        example: { data }
+      });
+    } catch (error) {
+      res
+        .status(400)
+        .render("400", { error: { name: error.name, msg: error.message } });
+    }
+  });
+
+  app.get("/cocktail", async (req, res) => {
+    try {
+      const { data } = await axios.get(
+        "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
+          req.query.name //of search bar
+      );
+      //prints random cocktail JSON data to the console
+      console.log(data);
+      // const dbExample = await db.Example.findOne({
+      //   where: { id: req.params.id }
+      // });
+      var chosenDrink = data[0].strDrink;
+      //where do i go from here? gotta repeat calling process above)
+      console.log(chosenDrink);
+      res.render("random", {
+        example: { data }
       });
     } catch (error) {
       res
@@ -58,5 +89,5 @@ module.exports = function(app) {
     res.render("404");
   });
 };
-
+//isolate first object of arrays
 // module.exports = { data };

@@ -25,23 +25,25 @@
 
           <h1>{{msg}}</h1>
           <h2>This is CocktailGenie</h2>
-          <form class="clearfix mb-4" action="POST">
+          <form class="clearfix mb-4" method="GET" action="/search"> 
             <div class="form-group">
-              <label for="example-text">Ingrediant</label>
-              <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+              <label for="example-text">Ingredient</label>
+              <input name="ingredient" type="text" id="example-text" class="form-control" aria-describedby="example-text"
                 placeholder="enter the name of an ingrediant ">
-              <button id="submit" class="btn btn-primary float-right">Search Ingrediant</button>
+              <input type="submit" id="ingredient" class="btn btn-primary float-right" value="search-ingredient"/>
             </div>
+            </form>
             <h1>or</h1>
+            <form class="clearfix mb-4" method="GET" action="/cocktail"> 
             <div class="form-group">
               <label for="example-text">specific cocktail</label>
-              <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+              <input name="name" type="text" id="example-text" class="form-control" aria-describedby="example-text"
                 placeholder="enter the name of a cocktail ">
-              <button id="submit" class="btn btn-primary float-right">Search cocktail</button>
+              <input type="submit" id="cocktail-search" class="btn btn-primary float-right" value="search-cocktail"/>
             </div>
           </form>
         </div>
-        <button id="randomize" class="btn btn-warning float-right">give me a random drink</button>
+        <a href="/random" id="randomize" class="btn btn-warning float-right">give me a random drink</a>
 
       </div>
       <h3>Popular searches</h3>
