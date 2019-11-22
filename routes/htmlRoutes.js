@@ -39,13 +39,37 @@ module.exports = function(app) {
   });
 
   // Load search page and pass in a cocktail ingredient
-  app.post("/search/:id", async (req, res) => {
+  app.get(
+    "/search/:id", //address this
+    async (req, res) => {
+      try {
+        const dbExample = await db.Example.findOne({
+          where: { id: req.params.id }
+        });
+        res.render("search", {
+          example: dbExample
+        });
+      } catch (error) {
+        res
+          .status(400)
+          .render("400", { error: { name: error.name, msg: error.message } });
+      }
+    }
+  );
+
+  app.get("/cocktail", async (req, res) => {
     try {
-      const dbExample = await db.Example.findOne({
-        where: { id: req.params.id }
-      });
+      const { data } = await axios.get(
+        "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
+          req.query.name //of search bar
+      );
+      //prints random cocktail JSON data to the console
+      console.log(data);
+      // const dbExample = await db.Example.findOne({
+      //   where: { id: req.params.id }
+      // });
       res.render("random", {
-        example: dbExample
+        example: { data }
       });
     } catch (error) {
       res
