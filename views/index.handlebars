@@ -25,12 +25,12 @@
 
           <h1>{{msg}}</h1>
           <h2>This is CocktailGenie</h2>
-          <form class="clearfix mb-4">
+          <form class="clearfix mb-4" method="GET" action="/search"> 
             <div class="form-group">
               <label for="example-text">Ingredient</label>
-              <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+              <input name="ingredient" type="text" id="example-text" class="form-control" aria-describedby="example-text"
                 placeholder="enter the name of an ingrediant ">
-              <a href="/search" class="btn btn-primary float-right">Search Ingredient</a>
+              <input type="submit" id="ingredient" class="btn btn-primary float-right" value="search-ingredient"/>
             </div>
             </form>
             <h1>or</h1>

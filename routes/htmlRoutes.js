@@ -1,5 +1,6 @@
 var db = require("../models");
 const axios = require("axios");
+console.log(db);
 
 module.exports = function(app) {
   // Load index page
@@ -39,29 +40,11 @@ module.exports = function(app) {
   });
 
   // Load search page and pass in a cocktail ingredient
-  app.get(
-    "/search/:id", //address this
-    async (req, res) => {
-      try {
-        const dbExample = await db.Example.findOne({
-          where: { id: req.params.id }
-        });
-        res.render("search", {
-          example: dbExample
-        });
-      } catch (error) {
-        res
-          .status(400)
-          .render("400", { error: { name: error.name, msg: error.message } });
-      }
-    }
-  );
-
-  app.get("/cocktail", async (req, res) => {
+  app.get("/search", async (req, res) => {
     try {
       const { data } = await axios.get(
-        "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
-          req.query.name //of search bar
+        "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" +
+          req.query.ingredient //of search bar
       );
       //prints random cocktail JSON data to the console
       console.log(data);
@@ -77,10 +60,34 @@ module.exports = function(app) {
         .render("400", { error: { name: error.name, msg: error.message } });
     }
   });
+
+  app.get("/cocktail", async (req, res) => {
+    try {
+      const { data } = await axios.get(
+        "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
+          req.query.name //of search bar
+      );
+      //prints random cocktail JSON data to the console
+      console.log(data);
+      // const dbExample = await db.Example.findOne({
+      //   where: { id: req.params.id }
+      // });
+      var chosenDrink = data[0].strDrink;
+      //where do i go from here? gotta repeat calling process above)
+      console.log(chosenDrink);
+      res.render("random", {
+        example: { data }
+      });
+    } catch (error) {
+      res
+        .status(400)
+        .render("400", { error: { name: error.name, msg: error.message } });
+    }
+  });
   // Render 404 page for any unmatched routes
   app.get("*", async (req, res) => {
     res.render("404");
   });
 };
-
+//isolate first object of arrays
 // module.exports = { data };
