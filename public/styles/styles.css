@@ -15,11 +15,8 @@
 
 
 body{
+  background: black; 
 
-  background: url("../images/backdrop.jpg"); 
-   color: white; 
-   background-size: cover;
-  background-repeat: no-repeat; 
 
 }
 
@@ -27,8 +24,18 @@ body{
   width: 200px;
   height: 200px;
 
-/* #supercontainer{
-  background: url("../images/backdrop.jpg");
-  background-size:cover ;
-} */
+}
+#maincontainer{
+  background-image:linear-gradient(to top , #A2560B,#F3610C,#F3AE0C,#ffffff) ;
+  text-align: center;
+  align-content: center;
+}
+
+#randomize{
+  margin-left:18% ;
+  width: 64%;
+  height: 30px;
+  
+}
+
 
