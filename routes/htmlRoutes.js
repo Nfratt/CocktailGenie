@@ -17,8 +17,8 @@ module.exports = function(app) {
     }
   });
 
-  // Load example page and get a random cocktail
-  app.get("/example", async (req, res) => {
+  // Load random page and get a random cocktail
+  app.get("/random", async (req, res) => {
     try {
       const { data } = await axios.get(
         "https://www.thecocktaildb.com/api/json/v1/1/random.php"
@@ -28,7 +28,7 @@ module.exports = function(app) {
       // const dbExample = await db.Example.findOne({
       //   where: { id: req.params.id }
       // });
-      res.render("example", {
+      res.render("random", {
         example: { data }
       });
     } catch (error) {
@@ -44,7 +44,7 @@ module.exports = function(app) {
       const dbExample = await db.Example.findOne({
         where: { id: req.params.id }
       });
-      res.render("example", {
+      res.render("random", {
         example: dbExample
       });
     } catch (error) {
