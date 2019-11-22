@@ -1,6 +1,5 @@
 var db = require("../models");
 const axios = require("axios");
-console.log(db);
 
 module.exports = function(app) {
   // Load index page
@@ -46,8 +45,17 @@ module.exports = function(app) {
         "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" +
           req.query.ingredient //of search bar
       );
-      //prints random cocktail JSON data to the console
+      //prints JSON data of different drinks to the console
       console.log(data);
+      //isolate first drink by ingredient
+      var chosenIngredientId = data.drinks[0].idDrink;
+      const nameFinder = await axios.get(
+        "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
+          chosenIngredientId
+      );
+      //www.thecocktaildb.com/api/json/v1/1/lookup.php?i=14978
+      console.log(nameFinder.data);
+      console.log(chosenIngredientId);
       // const dbExample = await db.Example.findOne({
       //   where: { id: req.params.id }
       // });
@@ -68,16 +76,21 @@ module.exports = function(app) {
           req.query.name //of search bar
       );
       //prints random cocktail JSON data to the console
-      console.log(data);
-      // const dbExample = await db.Example.findOne({
-      //   where: { id: req.params.id }
-      // });
-      var chosenDrink = data[0].strDrink;
+      //isolate first drink of array
+      var chosenDrink = data.drinks[0].idDrink;
+      // make that the only info returned to be Jqueried in
       //where do i go from here? gotta repeat calling process above)
-      console.log(chosenDrink);
+      console.log({ chosenDrink });
+      //call function taking in data return const = function() which returns new restructured object
+      //loop over data, extract whats needed, return object to be rendered
       res.render("random", {
         example: { data }
       });
+      const IdFinder = await axios.get(
+        "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
+          chosenDrink
+      );
+      console.log(IdFinder);
     } catch (error) {
       res
         .status(400)
@@ -89,5 +102,3 @@ module.exports = function(app) {
     res.render("404");
   });
 };
-//isolate first object of arrays
-// module.exports = { data };
