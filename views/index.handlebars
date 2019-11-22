@@ -11,15 +11,20 @@
               <label for="example-text">Ingrediant</label>
               <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
                 placeholder="enter the name of an ingrediant ">
+              <button id="submit" class="btn btn-primary float-right">Search</button>
             </div>
-
-
-            <button id="submit" class="btn btn-primary float-right">Search</button>
+            <h1>or</h1>
+            <div class="form-group">
+              <label for="example-text">specific cocktail</label>
+              <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+                placeholder="enter the name of a cocktail ">
+              <button id="submit" class="btn btn-primary float-right">Search cocktail</button>
             <button id="randomize" class="btn btn-warning float-right">give me a random drink</button>
+            </div>
           </form>
         </div>
       </div>
-      <h3>Recent searches</h3>
+      <h3>Popular searches</h3>
       <ul id="example-list" class="list-group">
         {{#each examples}}
         <li data-id="{{this.id}}" class="list-group-item">
@@ -46,11 +51,11 @@
         <img src="/images/whisky.png" id="alc" alt="whisky">
         <h3>Whisky</h3>
       </a>
-            <a class="work" href="">
+      <a class="work" href="">
         <img src="/images/gin.png" id="alc" alt="gin">
         <h3>Gin</h3>
       </a>
-            <a class="work" href="">
+      <a class="work" href="">
         <img src="/images/" id="alc" alt="taquila">
         <h3>Taquila</h3>
       </a>

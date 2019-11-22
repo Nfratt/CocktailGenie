@@ -26,8 +26,13 @@ body{
   height: 200px;
 }
 #maincontainer{
-  background-image:linear-gradient(to top left, #ffffff,#999999) ;
+  background-image:linear-gradient(to top , #A2560B,#F3610C,#F3AE0C,#ffffff) ;
   text-align: center;
+  align-content: center;
+}
+
+#randomize{
+  margin-right: 5%;
 }
 
 
