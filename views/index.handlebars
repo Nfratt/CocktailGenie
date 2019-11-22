@@ -24,13 +24,13 @@
 
 
           <h1>{{msg}}</h1>
-          <h2>This is CocktailGenie</h2>
+          <h2> What Cocktail should we make today?</h2>
           <form class="clearfix mb-4" method="GET" action="/search"> 
             <div class="form-group">
               <label for="example-text">Ingredient</label>
               <input name="ingredient" type="text" id="example-text" class="form-control" aria-describedby="example-text"
-                placeholder="enter the name of an ingrediant ">
-              <input type="submit" id="ingredient" class="btn btn-primary float-right" value="search-ingredient"/>
+                placeholder="Enter the name of an ingrediant ">
+              <input type="submit" id="ingredient" class="btn btn-primary float-right" value="search ingredient"/>
             </div>
             </form>
             <h1>or</h1>
@@ -38,15 +38,14 @@
             <div class="form-group">
               <label for="example-text">specific cocktail</label>
               <input name="name" type="text" id="example-text" class="form-control" aria-describedby="example-text"
-                placeholder="enter the name of a cocktail ">
-              <input type="submit" id="cocktail-search" class="btn btn-primary float-right" value="search-cocktail"/>
+                placeholder="Enter the name of a cocktail ">
+              <input type="submit" id="cocktail-search" class="btn btn-primary float-right" value="search cocktail"/>
             </div>
           </form>
         </div>
         <a href="/random" id="randomize" class="btn btn-warning float-right">give me a random drink</a>
 
       </div>
-      <h3>Popular searches</h3>
       <ul id="example-list" class="list-group">
         {{#each examples}}
         <li data-id="{{this.id}}" class="list-group-item">
@@ -58,7 +57,7 @@
     </div>
     <br>
     <div class="col-8 offset-2">
-      <h3></h3>
+      <h3>Popular searches</h3>
       <div class="work">
         <a href="">
           <img src="/images/rum.png" id="alc" alt="rum"></img>
@@ -91,7 +90,7 @@
       </a>
             <a class="work" href="">
         <img src="/images/moonshine.png" id="alc" alt="moonshine">
-        <h3>moonshine</h3>
+        <h3>Moonshine</h3>
       </a>
     </div>
   </div>

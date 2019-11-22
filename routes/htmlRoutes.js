@@ -8,7 +8,7 @@ module.exports = function(app) {
     try {
       // const dbExamples = await db.Example.findAll({});
       res.render("index", {
-        msg: "What drink will we make today?"
+        msg: "Welcome to CocktailGenie"
         // examples: dbExamples
       });
     } catch (error) {
