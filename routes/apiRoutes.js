@@ -53,7 +53,7 @@ module.exports = function(app) {
     console.log(drink);
     const allIng = mapIng(drink);
     try {
-      const result = await db.Recipe.create({
+      await db.Recipe.create({
         name: drink.strDrink,
         instruction: drink.strInstructions,
         ingMesObj: JSON.stringify(allIng)

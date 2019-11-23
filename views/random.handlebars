@@ -5,18 +5,32 @@
       <div class="card mt-4">
         <div class="card-body">
           <h5 class="card-title">Example</h5>
-          <p>
-            <strong>ID</strong>: {{example.id}}</p>
-          <p>
-            <p>
-              <strong>Text</strong>: {{example.text}}</p>
-            <p>
-              <strong>Description:</strong> {{example.description}}</p>
-            <a href="/"><button>← Back To Home</button></a>
+         <p> <strong>Cocktail</strong>: {{cocktail}} </p> 
+          <p> <strong>Indredients</strong>: </p>
+          <ol>
+            {{#each ingMesObj}}
+            <li> {{[0]}} </li>
+             <li> {{[1]}} </li>
+            {{/each}}
+          </ol>
+          {{!-- <p> <strong>Meausrements</strong>:</p>
+            <ol>
+            {{#each measurements}}
+            <li> {{measurement}} </li>
+            {{/each}}
+          </ol> --}}
+          <p> <strong>Instructions</strong> {{instructions}} </p>
+          <div class="mailer">
+            <form>
+              <input name="email" type="text" id="email-text" class="form-control" aria-describedby="example-text"
+                placeholder="Enter your e-mail to save this cocktail">
+              <input type="submit" id="cocktail-save" class="btn btn-primary float-right" value="save cocktail" />
+            </form>
+          </div>
+          <a href="/">← Back To Home</a>
         </div>
       </div>
 
     </div>
   </div>
-</div>
 </div>
