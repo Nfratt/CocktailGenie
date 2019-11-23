@@ -46,8 +46,12 @@ module.exports = function(app) {
       // const dbExample = await db.Example.findOne({
       //   where: { id: req.params.id }
       // });
+      const { strDrink, strInstructions } = data.drinks[0];
+      const ingMesObj = mapIng(data.drinks[0]);
       res.render("random", {
-        drinkName: data.drinks.strDrink
+        cocktail: strDrink,
+        instructions: strInstructions,
+        ingMesObj
       });
     } catch (error) {
       res
@@ -74,8 +78,12 @@ module.exports = function(app) {
       // const dbExample = await db.Example.findOne({
       //   where: { id: req.params.id }
       // });
-      res.render("random", {
-        example: { data }
+      const { strDrink, strInstructions } = nameFinder.data.drinks[0];
+      const ingMesObj = mapIng(nameFinder.data.drinks[0]);
+      res.render("search", {
+        cocktail: strDrink,
+        instructions: strInstructions,
+        ingMesObj
       });
     } catch (error) {
       res

@@ -15,7 +15,7 @@
 
 body{
   background: black; 
-  color: white;
+  color: black;
   font-family: 'DM Serif Display', serif;
 }
 
@@ -38,8 +38,5 @@ body{
   
 }
 
-#card-title{
-  color: black;
-}
 
 
