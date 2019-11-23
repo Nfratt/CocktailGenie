@@ -7,14 +7,14 @@
           <p> <strong>Cocktail</strong>: {{example.data.strDrink}} </p> 
           <p> <strong>Indredients</strong>: </p>
           <ol>
-            {{#each ingredient}}
-            <li> {{ingredient}} </li>
+            {{#each example.data.ingMesObj}}
+            <li> {{example.data.ingMesObj}} </li>
             {{/each}}
           </ol>
           <p> <strong>Meausrements</strong>:</p>
             <ol>
-            {{#each ingredient}}
-            <li> {{ingredient}} </li>
+            {{#each measurements}}
+            <li> {{measurement}} </li>
             {{/each}}
           </ol>
           <p> <strong>Instructions</strong> {{example.data.instructions}} </p>
