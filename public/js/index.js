@@ -6,6 +6,13 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
+  // sendRecipe: function() {
+  //   return $.ajax({
+  //     url: "api/send",
+  //     type: "POST",
+  //     data: something
+  //   });
+  // },
   saveExample: function(example) {
     return $.ajax({
       headers: {
