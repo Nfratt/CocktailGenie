@@ -78,9 +78,6 @@ module.exports = function(app) {
         instruction: drink.strInstructions,
         ingMesObj: JSON.stringify(allIng)
       });
-      if (result === null) {
-        return;
-      }
       res.json(allIng);
       console.log(result);
     } catch (error) {
