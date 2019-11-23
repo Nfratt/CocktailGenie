@@ -1,10 +1,23 @@
-var db = require("../models");
+// var db = require("../models");
 const axios = require("axios");
 //Create objects whose contents will be used in handlebars
-const ingredientsList = [];
-const measurements = [];
-module.exports = ingredientsList;
-module.exports = measurements;
+// const ingredientsList = [];
+// const measurements = [];
+// module.exports = ingredientsList;
+// module.exports = measurements;
+const mapIng = drink => {
+  const allIng = [];
+  let index = 1;
+  let curr, currMes;
+  do {
+    curr = `strIngredient${index}`;
+    currMes = `strMeasure${index}`;
+    allIng.push([drink[curr], drink[currMes]]);
+    index++;
+    console.log(drink[curr]);
+  } while (drink[curr] !== null);
+  return allIng;
+};
 module.exports = function(app) {
   //====================INDEX=============
   // Load index page
@@ -58,8 +71,6 @@ module.exports = function(app) {
         "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
           chosenIngredientId
       );
-      console.log(nameFinder.data);
-      console.log(chosenIngredientId);
       // const dbExample = await db.Example.findOne({
       //   where: { id: req.params.id }
       // });
@@ -80,6 +91,7 @@ module.exports = function(app) {
         "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
           req.query.name //of search bar
       );
+
       //prints cocktail JSON data to the console
       //isolate first drink of array
       var chosenDrink = data.drinks[0].idDrink;
@@ -87,14 +99,18 @@ module.exports = function(app) {
       console.log({ chosenDrink });
       //call function taking in data return const = function() which returns new restructured object
       //loop over data, extract whats needed, return object to be rendered
-      res.render("random", {
-        example: { data }
-      });
+
       const IdFinder = await axios.get(
         "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
           chosenDrink
       );
-      console.log(IdFinder);
+      const { strDrink, strInstructions } = IdFinder.data.drinks[0];
+      const ingMesObj = mapIng(IdFinder.data.drinks[0]);
+      res.render("cocktail", {
+        cocktail: strDrink,
+        instructions: strInstructions,
+        ingMesObj
+      });
     } catch (error) {
       res
         .status(400)
