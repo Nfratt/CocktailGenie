@@ -6,14 +6,20 @@
         <div class="card-body">
           <h5 class="card-title">Example</h5>
           <p>
-            <strong>ID</strong>: {{example.id}}</p>
+            <strong>Cocktail</strong>: {{example.data.strDrink}}</p>
           <p>
           <p>
-            <strong>Text</strong>: {{example.text}}</p>
+            {#foreach ingredients}
+            <strong>Indredients</strong>: {{example.data.ingredients}}</p>
+            {ingredients}
+             <p>
+             {#foreach measurements}  
+            <strong>Meausrements</strong>: {{example.data.measurements}}</p>
           <p>
-            <strong>Description:</strong> {{example.description}}</p>
-            <a href="/"><button>← Back To Home</button></a>
-            </div>
+            
+            <strong>Instructions</strong> {{example.data.instructions}}</p>
+            <a href="/">← Back To Home</a>
+
         </div>
       </div>
     </div>
