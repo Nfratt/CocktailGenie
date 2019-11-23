@@ -101,28 +101,31 @@ module.exports = function (app) {
   });
 
   // Email recipe
-  app.post("/api/send", async (req, res) => {
-    const transporter = nodemailer.createTransport({
-      service: "cocktailgenie",
-      auth: {
-        user: "mail@cocktailgenie.com",
-        pass: "threewishes"
-      }
-    });
-    const mailOptions = {
-      from: "mail@cocktailgenie.com",
-      to: "someperson@gmail.com",
-      subject: "Someone sent you a drink recipe from CocktailGenie!",
-      html: "<h3>Check out this drink recipe! <i>Bottoms up!</i></h3><br><h5>CocktailGenie: Helping bring out the master mixologist in you!</h5>"
-    };
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log("Email sent: " + info.response);
-      }
-    });
-  }
+  const transporter = nodemailer.createTransport({
+    host: "mail.cocktailgenie.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "mail@cocktailgenie.com",
+      pass: "threewishes"
+    },
+    tls:{
+      rejectUnauthorized:false
+    }
+  });
+  const mailOptions = {
+    from: "mail@cocktailgenie.com",
+    to: "randomguy@gmail.com",
+    subject: "Recipe from CocktailGenie",
+    html: "<h3>Hi there [user]! Here is your drink recipe. <i>Bottoms up!</i></h3><br><h5>CocktailGenie: Helping bring out the master mixologist in you!</h5>"
+  };
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
 
   // Delete an example by id
   app.delete("/api/drinks/:id", async (req, res) => {
