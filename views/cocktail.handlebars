@@ -4,20 +4,21 @@
       <div class="card mt-4">
         <div class="card-body">
           <h5 class="card-title">Example</h5>
-          <p>
-            <strong>Cocktail</strong>: {{example.data.strDrink}}</p>
-          <p>
-          <p>
-            {#foreach ingredients}
-            <strong>Indredients</strong>: {{example.data.ingredients}}</p>
-            {ingredients}
-             <p>
-             {#foreach measurements}  
-            <strong>Meausrements</strong>: {{example.data.measurements}}</p>
-          <p>
-            
-            <strong>Instructions</strong> {{example.data.instructions}}</p>
-            <a href="/">← Back To Home</a>
+          <p> <strong>Cocktail</strong>: {{example.data.strDrink}} </p> 
+          <p> <strong>Indredients</strong>: </p>
+          <ol>
+            {{#each ingredient}}
+            <li> {{ingredient}} </li>
+            {{/each}}
+          </ol>
+          <p> <strong>Meausrements</strong>:</p>
+            <ol>
+            {{#each ingredient}}
+            <li> {{ingredient}} </li>
+            {{/each}}
+          </ol>
+          <p> <strong>Instructions</strong> {{example.data.instructions}} </p>
+          <a href="/">← Back To Home</a>
         </div>
       </div>
     </div>
