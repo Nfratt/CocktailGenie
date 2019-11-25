@@ -99,22 +99,24 @@ module.exports = function (app) {
 
   // Email recipe
   app.post("/send", async (req, res) => {
+    const contents = req.body.drink;
+    console.log(req.body);
     const transporter = nodemailer.createTransport({
-      host: "localhost",
+      host: "smtp.ethereal.email",
       port: 587,
       secure: false,
-      // auth: {
-      //   user: "mail@cocktailgenie.com",
-      //   pass: "threewishes"
-      // }
+      auth: {
+        user: "carson.doyle@ethereal.email",
+        pass: "EQPsgYEcU8D7Jhb71u"
+      }
     });
     const mailOptions = {
       from: "mail@cocktailgenie.com",
-      // to: req.body.name, // Not working yet
-      to: "msp9612@gmail.com", // Matt's email (for testing)
+      to: req.body.email,
       subject: "Recipe from CocktailGenie",
-      html: "<h3>Hi there " + req.body.name + "! Here is your drink recipe. <i>Bottoms up!</i></h3><br>" +
-            "<h5>CocktailGenie: Helping bring out the master mixologist in you!</h5>"
+      html: "<h3>Hi there " + req.body.email + "! Here is your drink recipe. <i>Bottoms up!</i></h3>" +
+            contents + "<br><br>" +
+            "<h4>CocktailGenie: Helping bring out the master mixologist in you!</h4>"
     };
     transporter.sendMail(mailOptions, function(error, info){
       if (error) {
