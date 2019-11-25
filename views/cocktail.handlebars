@@ -20,7 +20,7 @@
           </ol> --}}
           <p> <strong>Instructions</strong> {{instructions}} </p>
           <div class="mailer">
-            <form>
+            <form method="POST" action="send">
                <input name="email" type="text" id="email-text" class="form-control" aria-describedby="example-text"
                 placeholder="Enter your e-mail to save this cocktail">
                 <input type="submit" id="cocktail-save" class="btn btn-primary float-right" value="save cocktail"/>
