@@ -99,19 +99,16 @@ module.exports = function (app) {
 
   // Email recipe
   app.post("/send", async (req, res) => {
-    const contents = req.body.drink;
-    console.log(req.body);
+    const contents = req.body.drink; // This doesn't work
     const transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
-      port: 587,
-      secure: false,
+      service: "gmail",
       auth: {
-        user: "carson.doyle@ethereal.email",
-        pass: "EQPsgYEcU8D7Jhb71u"
+        user: "cocktailgeniemail@gmail.com",
+        pass: "threewishes"
       }
     });
     const mailOptions = {
-      from: "mail@cocktailgenie.com",
+      from: "cocktailgeniemail@gmail.com",
       to: req.body.email,
       subject: "Recipe from CocktailGenie",
       html: "<h3>Hi there " + req.body.email + "! Here is your drink recipe. <i>Bottoms up!</i></h3>" +
