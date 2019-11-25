@@ -98,30 +98,30 @@ module.exports = function (app) {
   });
 
   // Email recipe
-  const transporter = nodemailer.createTransport({
-    host: "mail.cocktailgenie.com",
-    port: 587,
-    secure: false,
-    auth: {
-      user: "mail@cocktailgenie.com",
-      pass: "threewishes"
-    },
-    tls:{
-      rejectUnauthorized:false
-    }
-  });
-  const mailOptions = {
-    from: "mail@cocktailgenie.com",
-    to: "randomguy@gmail.com",
-    subject: "Recipe from CocktailGenie",
-    html: "<h3>Hi there [user]! Here is your drink recipe. <i>Bottoms up!</i></h3><br><h5>CocktailGenie: Helping bring out the master mixologist in you!</h5>"
-  };
-  transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Email sent: " + info.response);
-    }
+  app.post("/send", async (req, res) => {
+    const contents = req.body.drink; // This doesn't work
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "cocktailgeniemail@gmail.com",
+        pass: "threewishes"
+      }
+    });
+    const mailOptions = {
+      from: "cocktailgeniemail@gmail.com",
+      to: req.body.email,
+      subject: "Recipe from CocktailGenie",
+      html: "<h3>Hi there " + req.body.email + "! Here is your drink recipe. <i>Bottoms up!</i></h3>" +
+            contents + "<br><br>" +
+            "<h4>CocktailGenie: Helping bring out the master mixologist in you!</h4>"
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
   });
 
   // Delete an example by id
