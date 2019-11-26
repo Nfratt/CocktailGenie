@@ -103,7 +103,7 @@ module.exports = function (app) {
     const {email, cocktail, instructions, ingMesObj} = req.body;
     const contents = req.body.drink; // This doesn't work
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      service: "gmail", 
       auth: {
         user: "cocktailgeniemail@gmail.com",
         pass: "threewishes"
