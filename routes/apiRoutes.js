@@ -122,6 +122,9 @@ module.exports = function (app) {
         console.log("Email sent: " + info.response);
       }
     });
+    await db.users.create({
+      username: req.body.email
+    });
   });
 
   // Delete an example by id
