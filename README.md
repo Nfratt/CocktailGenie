@@ -1,38 +1,31 @@
-# Project Starter
+CocktailGenie
+Made as part of the Uconn coding bootcamp 
+made by Nick Frattaroli, Rafael Hermoso, Matt Petrower, Erik Tenecela
+CocktailGenie is a webapp that hooks into the Cocktail DB to give you drink suggestions based off the following criteria 
+(an igredient you have,a cocktail name, a random drink, or our most popular section) to give you the best drink to entertain as well as
+bring out the master mixologist in you!
 
-In this activity we will add the provided boilerplate to group project repos.
+INGREDIANT SEARCH
 
-## Instructions
+First: give Cocktail genie a name of an ingrediant you have
+ this will search the API and give you a result that matched your query
+ 
+Second:if you like the recipe? You Can share it via email either to yourself for later or your friends. doing so stores it in out local DB 
+allowing us to return you to it in the future.
 
-* Only one member of each group should complete this activity while the others watch.
+SEARCH BY NAME
+Know the name of your favorite drink. but dont know how to make it? fret not with CocktailGenie well search the CocktailDB to find the
+recipe for you
+additionally:again You Can share it via email either to yourself for later or your friends. doing so stores it in out local DB 
+allowing us to return you to it in the future.
 
-* Copy the entire 04-STU_PROJECT-STARTER folder to another location on your computers &mdash; wherever you would like your local copy of the group project to be.
+SEARCH BY RANDOM DRINK
+Dont know what you want? Just want ideas for the next party? wWnt to look better then Jeff and Brenda next door? use CocktailGenie to get
+ the latest drink inspireations.
+ 
+ again you can share this via email and store it in our local database
+ 
+ 
 
-* Rename the copied folder to the name of your project.
 
-* Open the copied project folder's `package.json` file and change its `name` property to the name of your project.
 
-* CD to the root of the copied project folder with your terminal and run the following commands:
-
-  ```
-  git init
-  git add .
-  git commit -m "Initial commit"
-  ```
-
-* Then copy the GitHub repo's remote SSH URL (the same URL you'd use to clone the repo).
-
-* Run the following commands in your terminal, replacing <remote-url> with your GitHub repo's remote SSH URL.
-
-  ```
-  git remote add origin <remote-url>
-  git push origin master
-  ```
-
-* If completed successfully you should see all of the files uploaded to GitHub.
-
-* All other group members should now clone the repo.
-
-* Discuss as a group:
-
-  * How would you now add changes to this project?
