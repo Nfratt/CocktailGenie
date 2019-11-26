@@ -98,7 +98,9 @@ module.exports = function (app) {
   });
 
   // Email recipe
+
   app.post("/send", async (req, res) => {
+    const {email, cocktail, instructions, ingMesObj} = req.body;
     const contents = req.body.drink; // This doesn't work
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -107,12 +109,14 @@ module.exports = function (app) {
         pass: "threewishes"
       }
     });
+    const ingredientHTML = ingMesObj.map(innerArr => {	
+      return `<li>${innerArr[0]} - ${innerArr[1]}</li>`;});
     const mailOptions = {
       from: "cocktailgeniemail@gmail.com",
-      to: req.body.email,
+      to: email,
       subject: "Recipe from CocktailGenie",
-      html: "<h3>Hi there " + req.body.email + "! Here is your drink recipe. <i>Bottoms up!</i></h3>" +
-            contents + "<br><br>" +
+      html: "<h3>Hi there " + email + "! Here is your drink recipe." + cocktail + "<i>Bottoms up!</i></h3>" + instructions+ingMesObj+
+            $(ingredientHTML)+ "<br><br>" +
             "<h4>CocktailGenie: Helping bring out the master mixologist in you!</h4>"
     };
     transporter.sendMail(mailOptions, function(error, info){
