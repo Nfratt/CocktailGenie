@@ -1,10 +1,7 @@
-// var db = require("../models");
+/* eslint-disable prettier/prettier */
+const db = require("../models");
 const axios = require("axios");
-//Create objects whose contents will be used in handlebars
-// const ingredientsList = [];
-// const measurements = [];
-// module.exports = ingredientsList;
-// module.exports = measurements;
+
 const mapIng = drink => {
   const allIng = [];
   let index = 1;
@@ -21,9 +18,10 @@ const mapIng = drink => {
 module.exports = function(app) {
   //====================INDEX=============
   // Load index page
-  app.get("/", async (req, res) => {
+  app.get("/", async(req, res) => {
     try {
       // const dbExamples = await db.Example.findAll({});
+
       res.render("index", {
         msg: "Welcome to CocktailGenie"
         // examples: dbExamples
@@ -36,7 +34,7 @@ module.exports = function(app) {
   });
   //===================RANDOM==================
   // Load random page and get a random cocktail
-  app.get("/random", async (req, res) => {
+  app.get("/random", async(req, res) => {
     try {
       const { data } = await axios.get(
         "https://www.thecocktaildb.com/api/json/v1/1/random.php"
@@ -53,6 +51,11 @@ module.exports = function(app) {
         instructions: strInstructions,
         ingMesObj
       });
+      await db.Recipe.create({
+        name: strDrink,
+        instruction: strInstructions,
+        ingMesObj: JSON.stringify(ingMesObj)
+      });
     } catch (error) {
       res
         .status(400)
@@ -61,11 +64,11 @@ module.exports = function(app) {
   });
   //====================SEARCH=========================
   // Load search page and pass in a cocktail ingredient
-  app.get("/search", async (req, res) => {
+  app.get("/search", async(req, res) => {
     try {
       const { data } = await axios.get(
         "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" +
-          req.query.ingredient //of search bar
+                req.query.ingredient //of search bar
       );
       //prints JSON data of different drinks to the console
       console.log(data);
@@ -73,7 +76,7 @@ module.exports = function(app) {
       var chosenIngredientId = data.drinks[0].idDrink;
       const nameFinder = await axios.get(
         "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
-          chosenIngredientId
+                chosenIngredientId
       );
       // const dbExample = await db.Example.findOne({
       //   where: { id: req.params.id }
@@ -85,6 +88,11 @@ module.exports = function(app) {
         instructions: strInstructions,
         ingMesObj
       });
+      await db.Recipe.create({
+        name: strDrink,
+        instruction: strInstructions,
+        ingMesObj: JSON.stringify(ingMesObj)
+      });
     } catch (error) {
       res
         .status(400)
@@ -93,11 +101,11 @@ module.exports = function(app) {
   });
   //======================COCKTAIL=====================
   // Load search page and pass in a specific cocktail
-  app.get("/cocktail", async (req, res) => {
+  app.get("/cocktail", async(req, res) => {
     try {
       const { data } = await axios.get(
         "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
-          req.query.name //of search bar
+                req.query.name //of search bar
       );
 
       //prints cocktail JSON data to the console
@@ -110,14 +118,20 @@ module.exports = function(app) {
 
       const IdFinder = await axios.get(
         "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
-          chosenDrink
+                chosenDrink
       );
       const { strDrink, strInstructions } = IdFinder.data.drinks[0];
       const ingMesObj = mapIng(IdFinder.data.drinks[0]);
+
       res.render("cocktail", {
         cocktail: strDrink,
         instructions: strInstructions,
         ingMesObj
+      });
+      await db.Recipe.create({
+        name: strDrink,
+        instruction: strInstructions,
+        ingMesObj: JSON.stringify(ingMesObj)
       });
     } catch (error) {
       res
@@ -125,8 +139,16 @@ module.exports = function(app) {
         .render("400", { error: { name: error.name, msg: error.message } });
     }
   });
+  app.post("/cocktail", async(req, res) => {
+    const email = req.body.email;
+
+    await db.Users.create({
+      username: email
+    });
+  });
   // Render 404 page for any unmatched routes
-  app.get("*", async (req, res) => {
+  app.get("*", async(req, res) => {
     res.render("404");
   });
+
 };
