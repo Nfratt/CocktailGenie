@@ -24,6 +24,7 @@ Dont know what you want? Just want ideas for the next party? wWnt to look better
  the latest drink inspireations.
  
  again you can share this via email and store it in our local database
+ Live on Heroku(https://cocktailgenie.herokuapp.com/)
  
  
 
