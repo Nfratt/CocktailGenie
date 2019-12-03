@@ -4,8 +4,8 @@
     },
     "test": {
         "username": "root",
-        "password": null,
-        "database": "testdb",
+        "password": "$#@Tner061",
+        "database": "drinks_db",
         "host": "localhost",
         "dialect": "mysql",
         "logging": false

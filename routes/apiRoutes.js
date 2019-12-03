@@ -28,7 +28,7 @@ module.exports = function (app) {
     console.log(results);
   });
 
-  app.get("/api/drinksbyid", async (req, res) => {
+  app.get("/api/drinks/:id", async (req, res) => {
     const cocktailId = req.body.cocktailId;
     const result = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + cocktailId);
 

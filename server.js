@@ -5,6 +5,8 @@ var bodyParser = require("body-parser");
 // const favicon = require("serve-favicon");
 var db = require("./models");
 
+//console.log('db', db)
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -27,7 +29,7 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-const syncOptions = { force: true };
+const syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
