@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+const mailPass = process.env.MAIL_PASS;
+
 const db = require("../models");
 
 const axios = require("axios");
@@ -31,7 +33,7 @@ module.exports = function (app) {
   app.get("/api/drinks/:id", async (req, res) => {
     const cocktailId = req.body.cocktailId;
     const result = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + cocktailId);
-
+    
     const drink = result.data.drinks[0];
     console.log(drink);
     const allIng = mapIng(drink);
@@ -99,14 +101,15 @@ module.exports = function (app) {
 
   // Email recipe
 
-  app.post("/send", async (req, res) => {
+  app.post("/api/send", async (req, res) => {
     const {email, cocktail, instructions, ingMesObj} = req.body;
-    const contents = req.body.drink; // This doesn't work
+    console.log(email, cocktail, instructions, ingMesObj);
+    
     const transporter = nodemailer.createTransport({
       service: "gmail", 
       auth: {
         user: "cocktailgeniemail@gmail.com",
-        pass: "threewishes"
+        pass: mailPass
       }
     });
     const ingredientHTML = ingMesObj.map(innerArr => {	
