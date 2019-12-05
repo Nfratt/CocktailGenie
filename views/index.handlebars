@@ -25,21 +25,21 @@
 
           <h1>{{msg}}</h1>
           <h2> What Cocktail should we make today?</h2>
-          <form class="clearfix mb-4" method="GET" action="/search"> 
+          <form class="clearfix mb-4" method="GET" action="/search">
             <div class="form-group">
               <label for="example-text">Ingredient</label>
-              <input name="ingredient" type="text" id="example-text" class="form-control" aria-describedby="example-text"
-                placeholder="Enter the name of an ingrediant ">
-              <input type="submit" id="ingredient" class="btn btn-primary float-right" value="search ingredient"/>
+              <input name="ingredient" type="text" id="example-text" class="form-control"
+                aria-describedby="example-text" placeholder="Enter the name of an ingrediant ">
+              <input type="submit" id="ingredient" class="btn btn-primary float-right" value="search ingredient" />
             </div>
-            </form>
-            <h1>or</h1>
-            <form class="clearfix mb-4" method="GET" action="/cocktail"> 
+          </form>
+          <h1>or</h1>
+          <form class="clearfix mb-4" method="GET" action="/cocktail">
             <div class="form-group">
               <label for="example-text">specific cocktail</label>
               <input name="name" type="text" id="example-text" class="form-control" aria-describedby="example-text"
                 placeholder="Enter the name of a cocktail ">
-              <input type="submit" id="cocktail-search" class="btn btn-primary float-right" value="search cocktail"/>
+              <input type="submit" id="cocktail-search" class="btn btn-primary float-right" value="search cocktail" />
             </div>
           </form>
         </div>
@@ -80,17 +80,10 @@
         <img src="/images/taquila.png" id="alc" alt="taquila">
         <h3>Taquila</h3>
       </a>
-            <a class="work" href="search?ingredient=redbull">
-        <img src="/images/redbull.png" id="alc" alt="redbull">
-        <h3>Redbull</h3>
-      </a>
-            <a class="work" href="search?ingredient=absinthe">
+
+      <a class="work" href="search?ingredient=absinthe">
         <img src="/images/abs1.png" id="alc" alt="Absinthe">
         <h3>Absinthe</h3>
-      </a>
-            <a class="work" href="search?ingredient=moonshine">
-        <img src="/images/moonshine.png" id="alc" alt="moonshine">
-        <h3>Moonshine</h3>
       </a>
     </div>
   </div>
@@ -110,7 +103,7 @@
   });
 
   // Toggle button
-  document.querySelector('.toggle-button').addEventListener('click', function() {
+  document.querySelector('.toggle-button').addEventListener('click', function () {
     slideout.toggle();
   });
 </script>
