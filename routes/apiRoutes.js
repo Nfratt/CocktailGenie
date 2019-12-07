@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+const mailPass = process.env.MAIL_PASS;
+
 const db = require("../models");
 
 const axios = require("axios");
@@ -28,10 +30,10 @@ module.exports = function (app) {
     console.log(results);
   });
 
-  app.get("/api/drinksbyid", async (req, res) => {
+  app.get("/api/drinks/:id", async (req, res) => {
     const cocktailId = req.body.cocktailId;
     const result = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + cocktailId);
-
+    
     const drink = result.data.drinks[0];
     console.log(drink);
     const allIng = mapIng(drink);
@@ -99,26 +101,26 @@ module.exports = function (app) {
 
   // Email recipe
 
-  app.post("/send", async (req, res) => {
+  app.post("/api/send", async (req, res) => {
     const {email, cocktail, instructions, ingMesObj} = req.body;
-    const contents = req.body.drink; // This doesn't work
+    console.log(email, cocktail, instructions, ingMesObj);
+    
     const transporter = nodemailer.createTransport({
       service: "gmail", 
       auth: {
         user: "cocktailgeniemail@gmail.com",
-        pass: "threewishes"
+        pass: mailPass
       }
     });
-    const ingredientHTML = ingMesObj.map(innerArr => {	
-      return `<li>${innerArr[0]} - ${innerArr[1]}</li>`;});
+    //const ingredientHTML = ingMesObj.map(innerArr => {	
+      //return `<li>${innerArr[0]} - ${innerArr[1]}</li>`;});
     const mailOptions = {
       from: "cocktailgeniemail@gmail.com",
       to: email,
       subject: "Recipe from CocktailGenie",
-      html: "<h3>Hi there " + email + "! Here is your drink recipe." + cocktail + "<i>Bottoms up!</i></h3>" + instructions+ingMesObj+
-            $(ingredientHTML)+ "<br><br>" +
-            "<h4>CocktailGenie: Helping bring out the master mixologist in you!</h4>"
+      html: "<h3>Hi there " + email + "! Here is your drink recipe." + "<br>" + "<br>" + cocktail + "<br>" + "<br>" + "<i>Bottoms up!</i></h3>" + "<br>" + ingMesObj + "<br>" + "<br>"+ instructions + "<h4>CocktailGenie: Helping bring out the master mixologist in you!</h4>" + "<br>" + "<h4> Please drink responsibly, don't drink and drive </h4>"
     };
+    console.log(res);
     transporter.sendMail(mailOptions, function(error, info){
       if (error) {
         console.log(error);

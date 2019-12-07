@@ -141,7 +141,7 @@ module.exports = function(app) {
   });
   app.post("/cocktail", async(req, res) => {
     const email = req.body.email;
-
+    console.log(res);
     await db.Users.create({
       username: email
     });
