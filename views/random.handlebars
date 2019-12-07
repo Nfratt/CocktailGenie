@@ -23,9 +23,9 @@
             <p id="instructionsId"> <strong>Instructions</strong> {{instructions}} </p>
             <div class="mailer">
               <form  >
-                <input name="email" type="text" id="email" class="form-control" aria-describedby="example-text"
+                <input name="email" type="email" id="email" class="form-control" aria-describedby="example-text"
                   placeholder="Enter your e-mail to save this cocktail">
-                <button onclick="mailer(event, '{{cocktail}}', {{{instructions}}}, {{{ingMesObj}}})" type="button" id="cocktail-save" class="btn btn-primary float-right"  >Save Cocktail</button>
+                <button onclick="return mailer(buttonArg)" type="button" id="cocktail-save" class="btn btn-primary float-right"  >Email this recipe</button>
               </form>
             </div>
             <a class="animated infinite shake delay-2s" href="/">← Back To Home</a>
@@ -35,3 +35,10 @@
     </div>
   </div>
 </div>
+<script>
+  var buttonArg = {
+    cocktail: `{{cocktail}}`,
+    instructions: `{{instructions}}`,
+    ingMesObj: `{{ingMesObj}}`
+  };
+</script>

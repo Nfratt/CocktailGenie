@@ -5,18 +5,19 @@ var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
-const mailer = function(event, cocktail, instructions) {
+const mailer = function(context) {
+  console.log(context);
   event.preventDefault();
   const email = $("#email").val();
-
-  console.log(email, cocktail, ingMesObj, instructions);
+  context.email = email;
+  // console.log(email, cocktail, ingMesObj, instructions);
   $.ajax({
     headers: {
       "Content-Type": "application/json"
     },
     type: "POST",
     url: "/api/send",
-    data: JSON.stringify({ email, cocktail, ingMesObj, instructions })
+    data: JSON.stringify(context)
   });
 };
 var API = {

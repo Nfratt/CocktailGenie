@@ -1,36 +1,44 @@
 <span id="topspan" class="container-fluid"></span>
 <div id="maincontainer" class="container-fluid">
-<div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card-body" name="drink">
-          <h5 class="card-title"><strong>{{cocktail}}</strong></h5>
-          <p> <strong>Indredients</strong>: </p>
-          <ol>
-            {{#each ingMesObj}}
-            <li> {{[0]}} </li>
-             <li> {{[1]}} </li>
-            {{/each}}
-          </ol>
-          {{!-- <p> <strong>Meausrements</strong>:</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <div class="card mt-4">
+          <div class="card-body" name="drink">
+            <h5 class="card-title"><strong>{{cocktail}}</strong></h5>
+            <p> <strong>Indredients</strong>: </p>
+            <ol>
+              {{#each ingMesObj}}
+              <li> {{[0]}} </li>
+              <li> {{[1]}} </li>
+              {{/each}}
+            </ol>
+            {{!-- <p> <strong>Meausrements</strong>:</p>
             <ol>
             {{#each measurements}}
             <li> {{measurement}} </li>
             {{/each}}
           </ol> --}}
-          <p> <strong>Instructions</strong> {{instructions}} </p>
-             <div class="mailer">
-            <form method="POST" action="send">
-               <input name="email" type="text" id="email-text" class="form-control" aria-describedby="example-text"
-                placeholder="Enter your e-mail to save this cocktail">
-                <input type="submit" id="cocktail-save" class="btn btn-primary float-right" value="save cocktail"/>
-            </form>
+            <p> <strong>Instructions</strong> {{instructions}} </p>
+            <div class="mailer">
+              <form>
+                <input name="email" type="email" id="email" class="form-control" aria-describedby="example-text"
+                  placeholder="Enter your e-mail to save this cocktail">
+                <button onclick="return mailer(buttonArg)" type="button" id="cocktail-save"
+                  class="btn btn-primary float-right">Email this recipe</button>
+              </form>
+            </div>
+            <a href="/">← Back To Home</a>
           </div>
-          <a href="/">← Back To Home</a>
         </div>
       </div>
     </div>
   </div>
 </div>
-</div>
+<script>
+  var buttonArg = {
+    cocktail: `{{cocktail}}`,
+    instructions: `{{instructions}}`,
+    ingMesObj: `{{ingMesObj}}`
+  };
+</script>

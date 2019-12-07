@@ -112,16 +112,15 @@ module.exports = function (app) {
         pass: mailPass
       }
     });
-    const ingredientHTML = ingMesObj.map(innerArr => {	
-      return `<li>${innerArr[0]} - ${innerArr[1]}</li>`;});
+    //const ingredientHTML = ingMesObj.map(innerArr => {	
+      //return `<li>${innerArr[0]} - ${innerArr[1]}</li>`;});
     const mailOptions = {
       from: "cocktailgeniemail@gmail.com",
       to: email,
       subject: "Recipe from CocktailGenie",
-      html: "<h3>Hi there " + email + "! Here is your drink recipe." + cocktail + "<i>Bottoms up!</i></h3>" + instructions+ingMesObj+
-            $(ingredientHTML)+ "<br><br>" +
-            "<h4>CocktailGenie: Helping bring out the master mixologist in you!</h4>"
+      html: "<h3>Hi there " + email + "! Here is your drink recipe." + "<br>" + "<br>" + cocktail + "<br>" + "<br>" + "<i>Bottoms up!</i></h3>" + "<br>" + ingMesObj + "<br>" + "<br>"+ instructions + "<h4>CocktailGenie: Helping bring out the master mixologist in you!</h4>" + "<br>" + "<h4> Please drink responsibly, don't drink and drive </h4>"
     };
+    console.log(res);
     transporter.sendMail(mailOptions, function(error, info){
       if (error) {
         console.log(error);
