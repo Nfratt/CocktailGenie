@@ -1,4 +1,5 @@
 CocktailGenie
+https://cocktailgenie.herokuapp.com/
 Made as part of the Uconn coding bootcamp 
 made by Nick Frattaroli, Rafael Hermoso, Matt Petrower, Erik Tenecela
 CocktailGenie is a webapp that hooks into the Cocktail DB to give you drink suggestions based off the following criteria 
